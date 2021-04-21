@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<!-- ICONS -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+			integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+			crossorigin="anonymous"
+		/>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="./css/style.css" />
+
+		<!-- VUE JS -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="slider" @mouseenter="stopLoop" @mouseleave="startLoop">
+				<div class="prev" @click="prevPhoto">
+					<i class="fas fa-angle-left"></i>
+				</div>
+				<div class="images">
+					<!-- <img src="./img/image1.jpg" alt="" /> -->
+					<img :src="photos[indexPhoto]" alt="" />
+				</div>
+				<div class="next" @click="nextPhoto">
+					<i class="fas fa-angle-right"></i>
+				</div>
+				<div class="nav">
+					<!-- <i class="fas fa-circle active first"></i> -->
+					<!-- <i class="fas fa-circle"></i>
+					<i class="fas fa-circle three"></i>
+					<i class="fas fa-circle last"></i> -->
+					<i
+						v-for="(photo, index) in photos"
+						class="fas fa-circle"
+						:class="{ active: index == indexPhoto }"
+						@click="switchPhoto(index)"
+					></i>
+				</div>
+			</div>
+		</div>
+
+		<!-- JS -->
+		<script src="./js/script.js"></script>
+	</body>
+</html>
